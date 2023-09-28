@@ -27,3 +27,12 @@ npm-debug.log.*
 *.css.d.ts
 *.sass.d.ts
 *.scss.d.ts
+
+v8-compile-cache-0/
+v8-compile-cache-502/
+
+
+release/app/pnpm-lock.yaml
+release/app/v8-compile-cache-502/
+pnpm-lock.yaml
+assets/

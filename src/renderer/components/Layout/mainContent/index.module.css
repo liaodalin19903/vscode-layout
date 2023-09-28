@@ -1,0 +1,39 @@
+.myTabsWithBreadcumpsContainer {
+  width: 100%;
+  heigth: 100%;
+}
+
+.myTabsWithBreadcumps :global(.ant-tabs-nav) {
+  height: 24px !important;
+}
+.myTabsWithBreadcumps :global(.ant-tabs-nav-list) {
+  height: 24px !important;
+}
+.myTabsWithBreadcumps :global(.ant-tabs-nav-list, .ant-tabs-nav) {
+  height: 24px !important;
+}
+
+.myTabsWithBreadcumps :global(.ant-tabs-tab){
+  width: 150px;
+}
+
+
+.myTabsWithBreadcumps :global(.ant-tabs-nav) {
+  border-radius: 0px !important;
+  margin-left: -1px !important;
+}
+
+.myTabsWithBreadcumps :global(.ant-tabs-nav, .ant-tabs-tab){
+  border-radius: 0px !important;
+  margin-left: -1px !important;
+}
+
+.myTabsWithBreadcumps :global(.ant-tabs-tab-btn) {
+  margin-right: auto;
+}
+
+.myTabsWithBreadcumps :global(.ant-tabs-tab-remove){
+  margin-left: auto;
+}
+
+

@@ -1,0 +1,21 @@
+
+.searchHeaderContainer {
+  background-color: rgb(241, 241, 241);
+  height: 75px;
+}
+
+.searchHeaderConentContainer {
+  padding: 6px;
+}
+
+
+.searchHeaderTitle {
+  margin-top: 6px !important;
+  font-size: 12px;
+  display: block;
+}
+
+.searchInput:global(.ant-input) {
+  margin-top: 10px !important;
+  border-radius: 2px !important;
+}

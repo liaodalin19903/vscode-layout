@@ -42,27 +42,13 @@
     "lint": "cross-env NODE_ENV=development eslint . --ext .js,.jsx,.ts,.tsx",
     "package": "ts-node ./.erb/scripts/clean.js dist && npm run build && electron-builder build --publish never && npm run build:dll",
     "rebuild": "electron-rebuild --parallel --types prod,dev,optional --module-dir release/app",
-    "start": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
+    "dev": "ts-node ./.erb/scripts/check-port-in-use.js && npm run start:renderer",
     "start:main": "cross-env NODE_ENV=development electronmon -r ts-node/register/transpile-only .",
     "start:preload": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.preload.dev.ts",
     "start:renderer": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack serve --config ./.erb/configs/webpack.config.renderer.dev.ts",
     "test": "jest"
   },
   "browserslist": [],
-  "prettier": {
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": [
-          ".prettierrc",
-          ".eslintrc"
-        ],
-        "options": {
-          "parser": "json"
-        }
-      }
-    ]
-  },
   "jest": {
     "moduleDirectories": [
       "node_modules",
@@ -96,12 +82,20 @@
     }
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "@vscode/codicons": "^0.0.33",
+    "allotment": "^1.19.2",
+    "antd": "^5.8.3",
+    "classnames": "^2.3.2",
+    "electron": "^25.8.1",
     "electron-debug": "^3.2.0",
+    "electron-is-dev": "^1.1.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^6.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@electron/notarize": "^2.1.0",
@@ -247,5 +241,6 @@
       "src/main/**"
     ],
     "logLevel": "quiet"
-  }
+  },
+  "eslintConfig": {"extends": "react-app"} 
 }

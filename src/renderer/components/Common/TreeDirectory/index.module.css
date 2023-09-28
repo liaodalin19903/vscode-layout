@@ -1,0 +1,10 @@
+
+.customAntTreeSwitcher :global(.ant-tree-list){
+  background-color: rgb(241, 241, 241);
+}
+
+.customAntTreeSwitcher :global(.ant-tree-list, .ant-tree-switcher) {
+  display: none;
+}
+
+

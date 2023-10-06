@@ -5,6 +5,7 @@ import "@vscode/codicons/dist/codicon.css";
 import styles from "./header.module.css";
 import { Button } from "antd";
 
+
 // import { useContextMenu } from 'mantine-contextmenu'
 //import {IconCopy, IconDownload} from 'mantine-contextmenu'
 
@@ -31,8 +32,14 @@ function header(
 
   return (
     <div className={styles.titlebar}>
-       <div className={styles.layoutControls}>
+      {/* <span className={styles.centerTitle}>楟木天工-技术支持/运维工具</span> */}
+      <div className={styles.titleContainer}>
+        <div className={styles.titleContent}>
+          <span>楟木天工-技术支持/运维工具</span>
+        </div>
+      </div>
 
+       <div className={styles.layoutControls}>
         <ul className={styles.rightActionsContainer}>
           <li>
             <a
@@ -54,7 +61,7 @@ function header(
                 onShowPrimarySideBarChanged(!showPrimarySideBar)
               }}
               onContextMenu={()=> {
-                
+
               }}
 
             ></a>
@@ -72,7 +79,7 @@ function header(
               tab-index="0"
               onClick={() => {
                 onShowPanelChanged(!showPanel)
-                
+
               }}
             ></a>
           </li>
@@ -105,10 +112,14 @@ function header(
               title=""
               tab-index="0"
               onClick= {
-                () => { 
-                  console.log(111) 
-                  const res = global.ipcRenderer.sendSync('db:getProjectInfo', 'test')
-                  console.log(res)
+                () => {
+                  console.log(111)
+
+                  console.log('global: ', global)
+                  console.log('global.ipcrender: ', global.ipcRenderer)
+
+                  //const res = global.ipcRenderer.sendSync('db:getProjectInfo', 'test')
+                  //console.log(res)
                 }
               }
             ></a>

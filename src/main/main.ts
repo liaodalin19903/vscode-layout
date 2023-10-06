@@ -15,6 +15,15 @@ import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
 
+import { registerIpcMainHandlers } from './ipc/ipcMainHandlers'
+
+const isDevelopment =
+  process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
+
+const isDebug =
+  process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
+
+
 class AppUpdater {
   constructor() {
     log.transports.file.level = 'info';
@@ -36,8 +45,6 @@ if (process.env.NODE_ENV === 'production') {
   sourceMapSupport.install();
 }
 
-const isDebug =
-  process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
 
 if (isDebug) {
   require('electron-debug')();
@@ -80,12 +87,14 @@ const createWindow = async () => {
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
 
+    //#region header的状态 
     titleBarStyle: 'hidden',
     titleBarOverlay: {
       color: '#2f3241',
       symbolColor: '#74b1be',
       height: 28
     }
+    //#endregion
 
   });
 
@@ -118,6 +127,8 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   new AppUpdater();
+
+  registerIpcMainHandlers()
 };
 
 /**

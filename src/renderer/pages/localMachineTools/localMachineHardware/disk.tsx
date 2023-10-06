@@ -2,7 +2,7 @@ import React from 'react'
 
 function disk() {
   return (
-    <div>disk</div>
+    <div>disk page</div>
   )
 }
 

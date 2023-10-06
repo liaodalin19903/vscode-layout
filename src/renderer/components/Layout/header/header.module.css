@@ -4,9 +4,11 @@
   background-color: rgb(50, 50, 50);
   border-radius: 8px 8px 0 0;
   color: rgb(204, 204, 204);
+  height: 28px;
   display: flex;
   flex-direction: row;
-  height: 28px;
+  justify-content: center;
+  align-items: center;
 }
 
 .layoutControls {
@@ -17,6 +19,21 @@
 
 .actionBar {
   line-height: 27px;
+}
+
+.titleContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.titleContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
 }
 
 .rightActionsContainer {

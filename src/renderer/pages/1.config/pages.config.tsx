@@ -2,7 +2,7 @@
 
 import React from "react"
 
-//#region 
+//#region
 // 0、appIntro
 import AppIntro from "./appIntro"
 
@@ -29,7 +29,7 @@ export const pagesKey = {
 
     localMachineNetwork: '002',
     localMachineInterfaces: '002-001'
-    
+
   },
 
   networkTools: {
@@ -51,14 +51,14 @@ export const getJsxByName = (name: string): ()=>JSX.Element => {
 
   switch(name) {
     //#region 1、LocalMachineTools
-    case "Cpu": 
-      return Cpu 
+    case "Cpu":
+      return Cpu
     case "Ram":
       return Ram
     case "Disk":
       return Disk
     case "LocalMachineInterfaces":
-      return LocalMachineInterfaces 
+      return LocalMachineInterfaces
     //#endregion
     default:
       return () => {return <></>}
@@ -70,11 +70,11 @@ export const getJsxByName = (name: string): ()=>JSX.Element => {
 
 export const pagesForTabChildren = (key: string | number): ()=>JSX.Element => {
   switch(key) {
-    //#region 
+    //#region
     // 0、theProduct
-    case pagesKey.theProduct.productInfo: 
-      return AppIntro 
-    // 1、LocalMachineTools  
+    case pagesKey.theProduct.productInfo:
+      return AppIntro
+    // 1、LocalMachineTools
     case pagesKey.localMachineTools.cpu:
       return Cpu
     case pagesKey.localMachineTools.ram:
@@ -82,12 +82,35 @@ export const pagesForTabChildren = (key: string | number): ()=>JSX.Element => {
     case pagesKey.localMachineTools.disk:
       return Disk
     case pagesKey.localMachineTools.localMachineInterfaces:
-      return LocalMachineInterfaces 
+      return LocalMachineInterfaces
 
 
     //#endregion
     default:
       return () => {return <></>}
 
+  }
+}
+
+export const iconToName = (key: string):string => {
+
+  switch(key) {
+    case "list":
+      return "已打开的页面"
+    case "sousuo":
+      return "搜索"
+    case "shoucang1":
+      return "收藏"
+    case "pc":
+      return "本机信息"
+    case "wangluo":
+      return "网络工具"
+    case "duomeiti":
+      return "多媒体工具"
+    case "database":
+      return "数据库工具"
+
+    default:
+      return ''
   }
 }

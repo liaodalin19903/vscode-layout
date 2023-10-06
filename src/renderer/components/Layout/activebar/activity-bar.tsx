@@ -32,12 +32,10 @@ export const ActivityBar = ({ checked, items, onClick }: ActivityBarProps) => {
                 [styles.checked]: index === checked,
               })}
               onMouseOver={()=> {
-                console.log('onMouseOver...')
-                // const content = (
-                //   <p>测试字符串</p>
-                // )
-
                 setClicked(index)
+              }}
+              onMouseLeave={() => {
+                setClicked(-1)
               }}
             >
 

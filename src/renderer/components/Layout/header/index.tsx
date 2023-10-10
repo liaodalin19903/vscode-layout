@@ -32,10 +32,10 @@ function header(
 
   return (
     <div className={styles.titlebar}>
-      {/* <span className={styles.centerTitle}>楟木天工-技术支持/运维工具</span> */}
+
       <div className={styles.titleContainer}>
         <div className={styles.titleContent}>
-          <span>楟木天工-技术支持/运维工具</span>
+          <span>楟木天工-技术支持/运维/网络工具</span>
         </div>
       </div>
 
@@ -115,8 +115,9 @@ function header(
                 () => {
                   console.log(111)
 
-                  console.log('global: ', global)
-                  console.log('global.ipcrender: ', global.ipcRenderer)
+                  const res = window.electron.ipcRenderer.sendSync("db:test")
+                  console.log(res)
+
 
                   //const res = global.ipcRenderer.sendSync('db:getProjectInfo', 'test')
                   //console.log(res)

@@ -142,6 +142,30 @@ export const getAllDataFromTable = (tablename: TablesType) => {
 //#endregion
 
 
+//#region 5、从表内删除数据
+export const deleteFromTable = (tablename: TablesType, tableparams: TablesParamsType) => {
+
+  const db = getDB()
+
+  switch (tablename) {
+    case "collectedTools":
+
+      console.log('tableparams.collectedtools_id: ', tableparams, tableparams.collectedtools_id)
+      const insertjob = db.prepare('DELETE FROM collectedTools WHERE collectedtools_id = ?')
+      const result = insertjob.run(tableparams.collectedtools_id)
+
+      console.log("result: ", result)
+      db.close()
+
+      break
+
+    default:
+      break
+  }
+}
+
+//#endregion
+
 export const testDB = () => {
   const db = getDB()
   // 准备查询语句

@@ -2,6 +2,9 @@ import { Tabs, TabsProps } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 
 import { pagesForTabChildren } from '../../../pages/1.config/pages.config';
+import { useStore } from "../../../store";
+
+import AppIntro from '../../../pages/1.config/appIntro'
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
 
@@ -18,6 +21,10 @@ export type TabsWithBreadcrumbsProps = {
 
 
 const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsWithBreadcrumbsProps) => {
+
+  const [items, setItems] = useState([]);  // initialItems
+  const [activeKey, setActiveKey] = useState(items[0] ? items[0].key : '000-000');
+  const newTabIndex = useRef(0);
 
   // 生命周期
   useEffect(() => {
@@ -52,14 +59,18 @@ const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsW
       })
     }
 
-    setItems(items)
 
-    setActiveKey(items[items.length-1].key)
+    //console.log('mmkk:initialBrief:  ', initialBrief)
+
+    setItems(items)
+    console.log('mmkk3-2: ', items)
+
+    if(items.length > 0) {
+      setActiveKey(items[items.length-1].key)
+    }
+
   }, [props])
 
-  const [items, setItems] = useState([]);  // initialItems
-  const [activeKey, setActiveKey] = useState(items[0] ? items[0].key : '000-000');
-  const newTabIndex = useRef(0);
 
   const onChange = (newActiveKey: string) => {
     setActiveKey(newActiveKey);
@@ -74,6 +85,7 @@ const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsW
   };
 
   const remove = (targetKey: TargetKey) => {
+
     let newActiveKey = activeKey;
     let lastIndex = -1;
     items.forEach((item, i) => {
@@ -90,6 +102,7 @@ const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsW
       }
     }
     setItems(newPanes);
+    //console.log('mmkk3: ', newPanes)
     setActiveKey(newActiveKey);
   };
 

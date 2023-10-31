@@ -9,6 +9,21 @@ import { Button } from "antd";
 // import { useContextMenu } from 'mantine-contextmenu'
 //import {IconCopy, IconDownload} from 'mantine-contextmenu'
 
+import {
+  convertTabsDataToTreeDirectoryData,
+  convertTreeDirectoryDataToTabsData
+}
+from '../../Common/utils/tabsAndTreeDirectoryUtil'
+
+import {
+  TabsWithBreadcrumbsProps,
+  TabsWithBreadcrumbs
+}
+from '../../Common/TabsWithBreadcrumbs'
+
+import type { DataNode, DirectoryTreeProps } from 'antd/es/tree';
+
+
 export type TitlebarProps = {
   showPanel: boolean;
   showPrimarySideBar: boolean;
@@ -115,12 +130,55 @@ function header(
                 () => {
                   console.log(111)
 
-                  const res = window.electron.ipcRenderer.sendSync("db:test")
-                  console.log(res)
+                  /*
+                  let lmtTreeData: DataNode[] = [
+                    {
+                      title: '本机硬件信息',
+                      key: '001',
+                      children: [
+                        { title: 'CPU', key: '001-001', isLeaf: true, selectable: false },
+                        { title: 'RAM', key: '001-002', isLeaf: true, selectable: false },
+                        { title: '磁盘', key: '001-003', isLeaf: true, selectable: false },
+                      ],
+                      selectable: false,
+                      icon: false,
+                    },
+                    {
+                      title: '本机网络信息',
+                      key: '002',
+                      children: [
+                        { title: '本机网卡', key: '002-001', isLeaf: true, selectable: false },
+                      ],
+                      selectable: false,
+                      icon: false
+                    },
+                  ];
+
+                  const res1 = convertTreeDirectoryDataToTabsData(lmtTreeData)
+                  console.log('res1: ', res1)
+                  */
 
 
-                  //const res = global.ipcRenderer.sendSync('db:getProjectInfo', 'test')
-                  //console.log(res)
+                  let tabsData =   [
+                    {
+                      title: "title",
+                      breadcrumbs: [],
+                      key: "001",
+                      children: [
+                        {
+                          title: "title2",
+                          breadcrumbs: ['000'],
+                          key: "001-001",
+                        }
+                      ]
+                    }
+                  ]
+
+                  const res2 = convertTabsDataToTreeDirectoryData(tabsData)
+                  console.log(res2)
+                  
+
+
                 }
               }
             ></a>

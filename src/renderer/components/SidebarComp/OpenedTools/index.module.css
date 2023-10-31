@@ -1,0 +1,11 @@
+
+.OpenedtoolsContainer {
+  background-color: rgb(241, 241, 241);
+}
+
+.OpenedtoolsHeaderContainer {
+  padding: 6px;
+  height: 46px;
+  font-size: 12px;
+  border-bottom: 1px solid rgb(208, 208, 208);
+}

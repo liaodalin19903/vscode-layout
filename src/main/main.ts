@@ -9,7 +9,7 @@
  * `./src/main.js` using webpack. This gives us some performance wins.
  */
 import path from 'path';
-import { app, BrowserWindow, shell, ipcMain } from 'electron';
+import { app, BrowserWindow, shell, ipcMain, globalShortcut } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
@@ -87,7 +87,7 @@ const createWindow = async () => {
         : path.join(__dirname, '../../.erb/dll/preload.js'),
     },
 
-    //#region header的状态 
+    //#region header的状态
     titleBarStyle: 'hidden',
     titleBarOverlay: {
       color: '#2f3241',
@@ -152,5 +152,14 @@ app
       // dock icon is clicked and there are no other windows open.
       if (mainWindow === null) createWindow();
     });
+
+    // 快捷键
+    // 注册快捷键
+    globalShortcut.register('CommandOrControl+R', () => {
+      // 禁止默认行为
+      // 或者，您可以在这里添加自定义行为
+      console.log('禁用刷新')
+    });
+
   })
   .catch(console.log);

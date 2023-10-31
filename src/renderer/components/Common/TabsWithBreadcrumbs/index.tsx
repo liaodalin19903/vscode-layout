@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { pagesForTabChildren } from '../../../pages/1.config/pages.config';
 import { useStore } from "../../../store";
 
+
 import AppIntro from '../../../pages/1.config/appIntro'
 
 type TargetKey = React.MouseEvent | React.KeyboardEvent | string;
@@ -21,6 +22,8 @@ export type TabsWithBreadcrumbsProps = {
 
 
 const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsWithBreadcrumbsProps) => {
+
+  const { tabs, removeTab } = useStore((state: any) => state)
 
   const [items, setItems] = useState([]);  // initialItems
   const [activeKey, setActiveKey] = useState(items[0] ? items[0].key : '000-000');
@@ -60,10 +63,7 @@ const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsW
     }
 
 
-    //console.log('mmkk:initialBrief:  ', initialBrief)
-
     setItems(items)
-    console.log('mmkk3-2: ', items)
 
     if(items.length > 0) {
       setActiveKey(items[items.length-1].key)
@@ -102,8 +102,13 @@ const TabsWithBreadcrumbs: React.FC<{data: TabsWithBreadcrumbs}> = (props: TabsW
       }
     }
     setItems(newPanes);
+
+    removeTab(targetKey) // 从store:tabs移除持久化
+
     //console.log('mmkk3: ', newPanes)
     setActiveKey(newActiveKey);
+
+
   };
 
   const onEdit = (

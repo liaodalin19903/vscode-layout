@@ -9,8 +9,19 @@ import TreeDirectory from '../../Common/TreeDirectory'
 
 import styles from '../LocalMachineTools/index.module.css'
 
-const originTreeData:DataNode[] =  [
+export const originTreeData:DataNode[] =  [
   {
+    title: "简介",
+    key: "00",
+    children: [{
+      title: "简介",
+      key: "000-000",
+      isLeaf: true,
+      selectable: false
+    }],
+    selectable: false
+  }
+  ,{
     title: "本机信息",
     key: "01",
     children: lmtTreeData,

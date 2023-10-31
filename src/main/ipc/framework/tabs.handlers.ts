@@ -31,15 +31,22 @@ export const tabsHandlers = () => {
 
     // 1.保存到sqlite数据库
     try {
-      // 先保证表存在
-      isTableExistsThenCreateTable("collectedTools")
-      // 插入数据
-      const param:collectedToolsParamType = {
-        collectedtools_id: data
-      }
-      insertIntoTable("collectedTools", param)
 
+      async function runAsyncCode() {
+        await isTableExistsThenCreateTable("collectedTools");
+
+        const param: collectedToolsParamType = {
+          collectedtools_id: data
+        };
+        await insertIntoTable("collectedTools", param);
+
+      }
+
+      runAsyncCode().catch(error => {
+        // 处理异步函数中的错误
+      });
       event.returnValue = '保存成功'
+
     } catch (err) {
       console.log("保存失败: ", err)
       event.returnValue = '保存失败'

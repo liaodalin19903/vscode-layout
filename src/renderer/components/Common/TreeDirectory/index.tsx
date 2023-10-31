@@ -25,7 +25,7 @@ const App: React.FC<{data: DataNode[]}> = (props: {data: DataNode[]}) => {
   };
 
   useEffect(()=> {
-    console.log('mmkk: ', props)
+    //console.log('mmkk: ', props)
 
   }, [])
 

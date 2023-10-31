@@ -66,10 +66,11 @@ export const convertTabsDataToTreeDirectoryData = (tabsData: TabsWithBreadcrumbs
   console.log('tabsData: ', tabsData)
 
   const ori_keys:string[] = tabsData.map(tab => tab.key as string)
+  console.log("ori_keys: ", ori_keys);
 
   // 遍历：去掉key("001-003_0")里面的("_0")
-  const keys = ori_keys.map(key => key.split(/[_-]/)[0]);
-  console.log(keys);
+  const keys = ori_keys.map(key => key.split(/[_]/)[0]);
+  console.log("keys: ", keys);
 
   return filterDataByKey(originTreeData, keys)
 

@@ -154,11 +154,22 @@ app
     });
 
     // 快捷键
-    // 注册快捷键
+    // 注册快捷键：
     globalShortcut.register('CommandOrControl+R', () => {
       // 禁止默认行为
       // 或者，您可以在这里添加自定义行为
       console.log('禁用刷新')
+
+
+    });
+
+    // 注册快捷键
+    globalShortcut.register('CommandOrControl+W', () => {
+      // 禁止默认行为
+      // 或者，您可以在这里添加自定义行为
+
+      mainWindow?.webContents.send('M2R-comdw', 'main发送的数据');
+
     });
 
   })

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import type { DataNode, DirectoryTreeProps } from 'antd/es/tree';
 
-import { filterDataByKey } from './util'
+import { filterDataByKeys } from './util'
 
 import { lmtTreeData } from '../LocalMachineTools'
 
@@ -37,8 +37,7 @@ function index() {
   const res = window.electron.ipcRenderer.sendSync("GetAllDataFromTable:collectTools")
   const keys:string[] = res.map((item: { collectedtools_id: any }) => item.collectedtools_id);
 
-  treeData = filterDataByKey(originTreeData, keys)
-  console.log('treeData: ', treeData)
+  treeData = filterDataByKeys(originTreeData, keys)
 
   return (
     <div className={styles.LocalmachineContainer}>

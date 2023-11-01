@@ -19,3 +19,20 @@
   margin-top: 10px !important;
   border-radius: 2px !important;
 }
+
+
+.searchDisplayCotainer {
+  background-color: rgb(241, 241, 241);
+  height: 100vh;
+}
+
+.searchDisplayContent:global(.ant-collapse) {
+  border-radius: 0px !important;
+}
+
+.searchDisplayContent:global(.ant-collapse, .ant-collapse-item:last-child) {
+  border-radius: 0px !important;
+}
+
+
+

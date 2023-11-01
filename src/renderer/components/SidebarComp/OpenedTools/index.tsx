@@ -72,9 +72,7 @@ function index() {
   let lmtTreeData:DataNode[] = []
 
   const { tabs, removeTab } = useStore((state: any) => state)
-  console.log('tabs-:', tabs)
   lmtTreeData = convertTabsDataToTreeDirectoryData(tabs)
-  console.log('lmtTreeData-:', lmtTreeData)
 
   updateToolnameBaseOnIsCollected(lmtTreeData)
 

@@ -106,7 +106,7 @@ const App: React.FC<{data: DataNode[]}> = (props: {data: DataNode[]}) => {
       <DirectoryTree
         className={styles.customAntTreeSwitcher}
         multiple
-        defaultExpandAll
+        defaultExpandAll={true}
         onSelect={onSelect}
         onExpand={onExpand}
         treeData= {props.data}
@@ -168,7 +168,7 @@ const App: React.FC<{data: DataNode[]}> = (props: {data: DataNode[]}) => {
                 //menu={{ items }}
                 menu={genDropdownItems(nodeData.key)}
                 trigger={['click']}
-                open={isOpenObj[nodeData.key]}
+                open={isOpenObj[nodeData.key as number]}
                 onOpenChange={()=>{
                   updateIsOpenObj(nodeData.key, false)
                 }}

@@ -15,6 +15,10 @@ import Disk from '../localMachineTools/localMachineHardware/disk'
 import LocalMachineInterfaces from '../localMachineTools/localMachineNetwork/localMachineInterfaces'
 //#endregion
 
+/**
+ * 【需要更新条件】：
+ *
+ */
 export const pagesKey = {
 
   theProduct: {
@@ -37,6 +41,55 @@ export const pagesKey = {
   }
 }
 
+/**
+ * 【需要更新条件】：pagesKey增加就增加
+ *
+ * 功能：直接对搜索参数进行搜索返回搜索到的工具的keys
+ */
+export const filterKeysBySearchParams = (searchParam: string): string[] => {
+
+  //#region key对应的被搜索数据：字符串数组
+  interface SearchData {
+    [key: string]: string[];
+  }
+  const searchData: SearchData = {
+    "000-000": ["简介"],
+
+    "001-001": ["CPU", "中央处理器"],
+    "001-002": ["RAM", "内存条"],
+    "001-003": ["DISK", "磁盘", "硬盘", "存储"],
+
+    "002-001": ["INTERFACE", "网卡", "en"],
+
+  }
+
+  // 搜索方法
+  // https://segmentfault.com/q/1010000044352055
+  function searchKeys(searchParam: string): string[] {
+    const loweredSearchParam = searchParam.toLowerCase();
+
+    const keys: string[] = Object.keys(searchData).filter((key: string) => {
+      const keywords: string[] = searchData[key];
+      return keywords.some((keyword: string) => keyword.toLowerCase().includes(loweredSearchParam));
+    });
+
+    return keys;
+  }
+
+
+
+
+  //#endregion
+
+  const result: string[] = searchKeys(searchParam);
+
+  return result
+}
+
+/**
+ * 【需要更新条件】：
+ *
+ */
 export const pagesBreadcrumbs = {
   '000-000': ['软件简介'],
   '001-001': ['本机信息', '本机硬件信息', 'CPU'],
@@ -92,6 +145,9 @@ export const pagesForTabChildren = (key: string | number): ()=>JSX.Element => {
   }
 }
 
+/**
+ * 【需要更新条件】：左侧icon增加就更新
+ */
 export const iconToName = (key: string):string => {
 
   switch(key) {
@@ -114,3 +170,6 @@ export const iconToName = (key: string):string => {
       return ''
   }
 }
+
+
+

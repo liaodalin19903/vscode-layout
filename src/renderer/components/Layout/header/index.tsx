@@ -71,8 +71,7 @@ function header(
               tab-index="0"
               onClick={(e) => {
                 console.log(e)
-                //e.preventDefault()
-                console.log('mk')
+
                 onShowPrimarySideBarChanged(!showPrimarySideBar)
               }}
               onContextMenu={()=> {
@@ -176,7 +175,7 @@ function header(
 
                   const res2 = convertTabsDataToTreeDirectoryData(tabsData)
                   console.log(res2)
-                  
+
 
 
                 }

@@ -1,7 +1,5 @@
 // 搜索框内的搜索组件
 
-// #TODO: bug1. 需要一开始就是全部展开
-
 import React, { useEffect, useState } from 'react'
 
 import styles from './index.module.css'
@@ -69,7 +67,12 @@ function Search() {
       </div>
 
       <div className={styles.searchDisplayCotainer}>
-        <TreeDirectory data={lmtTreeData}></TreeDirectory>
+        {
+          lmtTreeData.length ?
+           <TreeDirectory data={lmtTreeData}></TreeDirectory> :
+           null
+        }
+
       </div>
     </div>
   )

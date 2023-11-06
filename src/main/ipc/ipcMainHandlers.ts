@@ -9,6 +9,8 @@ import { tabsHandlers } from './framework/tabs.handlers'
 
 
 import { cpuHandlers } from './pages/localMachineTools/cpu.handlers'
+import { ramHandlers } from './pages/localMachineTools/ram.handlers'
+import { diskHandlers } from './pages/localMachineTools/disk.handlers'
 
 //#endregion
 
@@ -30,6 +32,8 @@ export const registerIpcMainHandlers = () => {
 
   // localMachineTools handlers
   cpuHandlers()
+  ramHandlers()
+  diskHandlers()
 
   //#endregion
 

@@ -2,12 +2,12 @@ import { ipcMain } from 'electron';
 
 const si = require('systeminformation');
 
-export const cpuHandlers = () => {
-  // 获取cpu 信息
-  ipcMain.on('R2M:localMachineTools:getCPUInfo'  , (event, data) => {
+export const ramHandlers = () => {
+  // 获取ram 信息
+  ipcMain.on('R2M:localMachineTools:getRAMInfo'  , (event, data) => {
 
     // promises style - new since version 3
-    si.cpu()
+    si.memLayout()
       .then((data: any) => {
         event.returnValue = data
       })
@@ -16,6 +16,4 @@ export const cpuHandlers = () => {
         event.returnValue = error
       });
   });
-
-
 }

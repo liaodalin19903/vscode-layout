@@ -147,7 +147,7 @@ const App: React.FC<{data: DataNode[]}> = (props: {data: DataNode[]}) => {
 
                 const tab = {
                   title: nodeDataItem.title,
-                  children: childrenEle(), //nodeDataItem.children,
+                  //children: childrenEle(), //nodeDataItem.children,
                   key: nodeDataItem.key + '_' + keyCount.toString(),
                   ...{breadcrumbs: pagesBreadcrumbs[nodeData.key]}
                 }

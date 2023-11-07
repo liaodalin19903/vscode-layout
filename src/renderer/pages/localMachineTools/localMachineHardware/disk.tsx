@@ -40,7 +40,7 @@ const convertDISKDataToCollapsePropsItem = (DISKData: DISKDataType[]):CollapsePr
         <p>名称：{defaultInfo(disk.name)}</p>
 
         <p>大小：{defaultInfo(disk.size)}</p>
-        <p>扇区大小：{defaultInfo(disk.bytesPerSector)}</p>
+        <p>扇区大小：{defaultInfo(convertBytesToReadable(Number(disk.bytesPerSector)))}</p>
         <p>总柱面数：{defaultInfo(disk.totalCylinders)}</p>
         <p>总磁头数：{defaultInfo(disk.totalHeads)}</p>
         <p>总扇区数：{defaultInfo(disk.totalSectors)}</p>
@@ -83,9 +83,8 @@ function disk() {
 
     const tmpItems = convertDISKDataToCollapsePropsItem(DISKData)
     setItems(tmpItems)
-
-
   }, [])
+  
   return (
     <div>
       <Collapse accordion items={items} />

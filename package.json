@@ -84,7 +84,7 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "allotment": "^1.19.2",
-    "antd": "^5.8.3",
+    "antd": "^5.10.3",
     "classnames": "^2.3.2",
     "electron": "^25.8.1",
     "electron-debug": "^3.2.0",

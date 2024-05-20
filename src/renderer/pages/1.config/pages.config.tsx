@@ -13,6 +13,17 @@ import Ram from '../localMachineTools/localMachineHardware/ram'
 import Disk from '../localMachineTools/localMachineHardware/disk'
 
 import LocalMachineInterfaces from '../localMachineTools/localMachineNetwork/localMachineInterfaces'
+
+// 2、网络工具
+import Ping from '../networkTools/networkTools/ping'
+import Traceroute from '../networkTools/networkTools/traceroute'
+
+import PortSniffing from '../networkTools/networkTools/portSniffing'
+
+import AnaPCAP from "../networkTools/networkAna/anaPCAP"
+// 3、
+
+
 //#endregion
 
 /**
@@ -27,6 +38,7 @@ export const pagesKey = {
 
   localMachineTools: {
     localMachineHardware: '001',
+
     cpu: '001-001',
     ram: '001-002',
     disk: '001-003',
@@ -37,7 +49,14 @@ export const pagesKey = {
   },
 
   networkTools: {
+    networkTools: '003-01',  // 网络工具
 
+    ping: '003-001',
+    traceroute: '003-002',
+    portSniffing: '003-003', // 端口嗅探
+
+    ana: '003-02',  // 网络分析
+    anaPCAP: "003-004"
   }
 }
 
@@ -60,6 +79,11 @@ export const filterKeysBySearchParams = (searchParam: string): string[] => {
     "001-003": ["DISK", "磁盘", "硬盘", "存储"],
 
     "002-001": ["INTERFACE", "网卡", "en"],
+
+    "003-001": ["ping", "通", "ICMP"],
+    "003-002": ["traceoute", "path", "路径", "路由"],
+    "003-003": ["port", "端口", "端口嗅探"],
+    "003-004": ["网络分析", "wireshark", "pcap", "抓包"],
 
   }
 
@@ -96,29 +120,36 @@ export const pagesBreadcrumbs = {
   '001-002': ['本机信息', '本机硬件信息', 'RAM'],
   '001-003': ['本机信息', '本机硬件信息', '磁盘'],
 
-  '002-001': ['本机信息', '本机网络信息', '本机网卡']
+  '002-001': ['本机信息', '本机网络信息', '本机网卡'],
+
+  '003-001': ['计算机网络', '网络工具', 'ping'],
+  '003-002': ['计算机网络', '网络工具', 'traceroute'],
+  '003-003': ['计算机网络', '网络工具', '端口嗅探'],
+  '003-004': ['计算机网络', '网络分析', 'pcap包分析'],
+
+
 }
 
 
-export const getJsxByName = (name: string): ()=>JSX.Element => {
+// export const getJsxByName = (name: string): ()=>JSX.Element => {
 
-  switch(name) {
-    //#region 1、LocalMachineTools
-    case "Cpu":
-      return Cpu
-    case "Ram":
-      return Ram
-    case "Disk":
-      return Disk
-    case "LocalMachineInterfaces":
-      return LocalMachineInterfaces
-    //#endregion
-    default:
-      return () => {return <></>}
+//   switch(name) {
+//     //#region 1、LocalMachineTools
+//     case "Cpu":
+//       return Cpu
+//     case "Ram":
+//       return Ram
+//     case "Disk":
+//       return Disk
+//     case "LocalMachineInterfaces":
+//       return LocalMachineInterfaces
+//     //#endregion
+//     default:
+//       return () => {return <></>}
 
-  }
+//   }
 
-}
+// }
 
 
 export const pagesForTabChildren = (key: string | number): ()=>JSX.Element => {
@@ -136,7 +167,15 @@ export const pagesForTabChildren = (key: string | number): ()=>JSX.Element => {
       return Disk
     case pagesKey.localMachineTools.localMachineInterfaces:
       return LocalMachineInterfaces
-
+    // 2、网络工具
+    case pagesKey.networkTools.ping:
+      return Ping
+    case pagesKey.networkTools.traceroute:
+      return Traceroute
+    case pagesKey.networkTools.portSniffing:
+      return PortSniffing
+    case pagesKey.networkTools.anaPCAP:
+      return AnaPCAP
 
     //#endregion
     default:

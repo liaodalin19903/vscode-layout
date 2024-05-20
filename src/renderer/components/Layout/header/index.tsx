@@ -50,7 +50,7 @@ function header(
 
       <div className={styles.titleContainer}>
         <div className={styles.titleContent}>
-          <span>楟木天工-技术支持/运维/网络工具</span>
+          <span>技术支持/运维/网络工具</span>
         </div>
       </div>
 
